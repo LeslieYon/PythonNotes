@@ -56,7 +56,7 @@ mike.studentID = "123456" #为对象添加数据成员（后期添加的成员�
 def show_studentID(self):
 	print(self.studentID)
 import types
-mike.studentID = "456789" #后期添加的成员，即使以__开头也不会被看做是私有成员，本次修改有效
+mike.studentID = "456789" #后期添加的成员，即使以__开头也不会被看做是私有成员，本次赋值有效
 mike.show_studentID = types.MethodType(show_studentID,mike) #使用types.MethodType()为对象添加函数成员
 mike.show_studentID() #输出结果为 456789
 
@@ -82,10 +82,10 @@ print(type(mike)) #输出结果为 <class '__main__.Student'>
 #可以使用isinstance()函数判断某对象的类型
 isinstance(mike,Student) # True
 isinstance(mike,Human) # True
-isinstance(mike,type(mike)) #True
-isinstance(mike,(Student,int)) #True 该表达式表示mike是否是(Student,int)中的类型之一
-issubclass(Human,Student) #False issubclass()函数可以判断两个参数中前者是否是后者的派生类
-issubclass(Student,Human) #True
+isinstance(mike,type(mike)) # True
+isinstance(mike,(Student,int)) # True 该表达式表示mike是否是(Student,int)中的类型之一
+issubclass(Human,Student) # False issubclass()函数可以判断两个参数中前者是否是后者的派生类
+issubclass(Student,Human) # True
 
 #使用dir()函数可以获取某对象的所有成员
 #形如__dir__的成员是系统使用的特殊成员，例如__str__可以用于重定义Student类实例转换为字符串
