@@ -23,6 +23,14 @@ from functools import reduce
 def add(x,y):return x*10+y #该函数将x、y两个十进制数连接起来，变成xy。
 print( reduce(add,[x for x in range(1,10)]) ) #输出结果为整数 123456789
 
+#下面的函数实现长加法表达式字符串的计算
+def LineAdd(exp):
+	ss = exp.split('+') #split函数用于字符串分割，返回值为一个tuple
+	ns = map(int, ss) #利用map函数将所有的加数转换为整数
+	return reduce(lambda acc,x:acc+x, ns) #利用reduce函数实现累加
+
+print(LineAdd("1+2+3+4+5+6+7+8+9")) #输出结果为 45
+
 #下面的代码实现将字符串转换为浮点数
 CHAR_TO_FLOAT = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'.':-1} #小数点用 -1 表示
 def c_to_float(c): return CHAR_TO_FLOAT[c]
